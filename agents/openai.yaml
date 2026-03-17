@@ -1,0 +1,14 @@
+interface:
+  display_name: "Guitar Coach"
+  description: >
+    A structured AI guitar-practice coach for returning beginners.
+    Guides timed practice sessions, manages lesson roadmaps and daily
+    markdown logs, tracks weak spots, and recommends whether to repeat,
+    simplify, or advance.
+
+# NOTE: This file is reserved for OpenAI Actions / ChatGPT plugin metadata.
+# The primary skill definition lives in SKILL.md at the repo root.
+# When deploying as an OpenAI Action, expand this file with:
+#   - openapi: 3.1.0 spec block
+#   - auth section
+#   - actions mapping to scripts/ endpoints

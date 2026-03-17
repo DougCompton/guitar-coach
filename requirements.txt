@@ -1,0 +1,14 @@
+# Guitar Coach — Python dependencies
+# Python 3.9 or newer is required.
+#
+# All scripts in scripts/ use only Python standard-library modules EXCEPT
+# listen_and_reflect.py, which needs sounddevice for live microphone capture.
+#
+# Install core dependencies (none required for most scripts):
+#   pip install -r requirements.txt
+#
+# Install the optional audio dependency for microphone recording:
+#   pip install sounddevice
+
+# Optional: live microphone capture in scripts/listen_and_reflect.py
+sounddevice>=0.4.6  ; extra == "audio"
