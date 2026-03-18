@@ -91,10 +91,10 @@ Suggested rule:
 - require at least 3 clean reps before advancing to the next rung
 - do not count a rep as clean if rhythm breaks, notes buzz badly, or tension spikes
 
-Use `scripts/tempo_ladder.py` to build the ladder.
+Use `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/scripts/tempo_ladder.py` to build the ladder.
 
 ## Spaced repetition schedule
 
 After a lesson becomes playable, keep it alive with review passes at +2, +7, +14, and +30 days.
 
-Use `prompts/review_schedule.md` when the user wants concrete dates — collect skill name, start date, last attempt, performance quality, and prior review count conversationally, then read that prompt to compute the schedule.
+Use `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/prompts/review_schedule.md` when the user wants concrete dates — collect skill name, start date, last attempt, performance quality, and prior review count conversationally, then read that prompt to compute the schedule.
