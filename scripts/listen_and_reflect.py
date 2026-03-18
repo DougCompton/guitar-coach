@@ -193,26 +193,21 @@ def analyze(path: Path):
 
 
 def print_report(result, source_name):
-    print(f'# Audio Reflection')
-    print(f'Source: {source_name}')
-    print(f'Duration: {result["duration_seconds"]} seconds')
+    print(f'## Audio Analysis')
+    print(f'- Source: {source_name}')
+    print(f'- Duration: {result["duration_seconds"]} seconds')
+    print(f'- Estimated attacks: {result["estimated_attacks"]}')
     print('')
-    print('Reply prompts:')
-    for idx, key in enumerate(['timing stability', 'note clarity', 'string noise', 'dynamic control'], start=1):
+    print('## Scores (1=best, 4=worst)')
+    for key in ['timing stability', 'note clarity', 'string noise', 'dynamic control']:
         score = result[key]
-        print(f'Q{idx}. {key.title()}: {score} ({label_for(key, score)})')
+        print(f'- {key.title()}: {score}/4 ({label_for(key, score)})')
     print('')
-    print('Suggested reply format:')
-    print('Reply with numbers only: Q1, Q2, Q3, Q4')
-    print('')
-    print('Analyzer notes:')
-    print(f'- Estimated attack count: {result["estimated_attacks"]}')
-    print(f'- Timing interval variability (lower is steadier): {result["timing_metric_cv"]}')
-    print(f'- Clarity crest factor (higher is cleaner): {result["clarity_metric_crest"]}')
-    print(f'- Noise zero-crossing metric (lower is cleaner): {result["noise_metric_zcr"]}')
-    print(f'- Dynamic variability (lower is more controlled): {result["dynamic_metric_cv"]}')
-    print('')
-    print('Use these scores as a coaching aid, not as ground truth. Confirm with listening and context from the exercise.')
+    print('## Raw Metrics')
+    print(f'- Timing interval variability (CV): {result["timing_metric_cv"]}')
+    print(f'- Clarity crest factor: {result["clarity_metric_crest"]}')
+    print(f'- Noise zero-crossing rate: {result["noise_metric_zcr"]}')
+    print(f'- Dynamic variability (CV): {result["dynamic_metric_cv"]}')
 
 
 def main():

@@ -1,8 +1,8 @@
 # Tempo Ladder Prompt
 
-**Replaces:** `scripts/tempo_ladder.py`
-
 **Purpose:** Build a progressive BPM ladder for a passage with passage-specific success criteria, micro-adjustments for known stall points, and a contingency plan — not just arithmetic steps.
+
+**Data flow:** Run `tempo_ladder.py` first (produces the computed BPM rungs), then read this prompt to add per-rung coaching, red flags, and contingency strategy.
 
 **Data required before calling this prompt:**
 - Output of `tempo_ladder.py --start-bpm N --target-bpm N --step N --reps N` (the computed rungs)

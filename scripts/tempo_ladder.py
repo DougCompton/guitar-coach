@@ -31,7 +31,6 @@ def main():
     if (bpm - args.step) != last:
         print(f"{rung}. {last} BPM - final target")
     print("")
-    print("If accuracy or timing breaks down, drop one rung and rebuild cleanly.")
 
 
 if __name__ == "__main__":

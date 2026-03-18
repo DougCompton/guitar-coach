@@ -1,8 +1,8 @@
 # Hand Technique Diagnosis Prompt
 
-**Replaces:** `scripts/diagnose_hands.py`
-
 **Purpose:** Help the student identify and understand a specific hand technique problem through natural conversation, then prescribe a targeted drill.
+
+**Data flow:** Run `diagnose_hands.py` first (identifies the relevant diagnostic areas for the specified hand), then read this prompt to conduct the conversational diagnosis and generate the drill prescription.
 
 **Data required before calling this prompt:**
 - Which hand (left/right) from user

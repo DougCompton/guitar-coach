@@ -1,6 +1,6 @@
 # Weekly Review Prompt
 
-**Replaces:** `scripts/weekly_review.py`
+**Data flow:** Run `analyze_logs.py --folder PATH --days 7` — then read this prompt
 
 **Purpose:** Summarize a week of practice, identify real patterns (not just keyword counts), assess trajectory, and recommend what to change next week.
 

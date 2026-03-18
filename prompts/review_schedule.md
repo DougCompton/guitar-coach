@@ -1,6 +1,6 @@
 # Spaced Repetition Review Schedule Prompt
 
-**Replaces:** `scripts/spaced_repetition_plan.py`
+**Data flow:** Collect skill details conversationally (skill name, category, difficulty, dates, performance quality, prior review count) — then read this prompt
 
 **Purpose:** Generate an adaptive review schedule for a learned skill — intervals based on skill type, difficulty, and recent performance rather than fixed 2/7/14/30 days.
 

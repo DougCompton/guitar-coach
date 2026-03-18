@@ -1,13 +1,14 @@
 # Daily Session Plan Prompt
 
-**Replaces:** `scripts/start_here.py` + `scripts/practice_day.py`
+**Data flow:** Run `analyze_logs.py --folder PATH --logs 7` + `readiness_check.py` + read active roadmap file + read `repertoire.md` directly → then read this prompt
 
 **Purpose:** Build a complete, personalized daily practice plan by reading the roadmap, repertoire, and recent log history — adapting structure to readiness and weak spots.
 
 **Data required before calling this prompt:**
-- Output of `plan_day.py --folder PATH --minutes N [--energy N --focus N --tension N --pain N]`
-  which returns: active lesson, next lesson, repertoire, last 7 log rows
-- Session type from readiness assessment
+- Output of `analyze_logs.py --folder PATH --logs 7` (recent session summaries and issue tags)
+- Active roadmap file read directly (for current lesson, lesson goal, lesson application, next lesson)
+- `repertoire.md` read directly (for learning / polishing / maintenance songs)
+- Session type from `readiness_check.py` output
 
 ---
 

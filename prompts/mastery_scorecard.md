@@ -1,6 +1,6 @@
 # Mastery Scorecard Prompt
 
-**Replaces:** `scripts/mastery_score.py`
+**Data flow:** Run `analyze_logs.py --folder PATH --logs 12` → then read this prompt
 
 **Purpose:** Estimate the student's mastery level across 6 skill areas from practice log evidence — using natural language understanding, not keyword counting.
 

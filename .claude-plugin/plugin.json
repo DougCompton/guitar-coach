@@ -1,0 +1,10 @@
+{
+  "name": "guitar-coach",
+  "version": "1.0.0",
+  "description": "Structured AI guitar-practice coach for returning beginners. Provides lesson roadmaps, timed practice sessions, daily markdown logs, and progression recommendations.",
+  "author": {
+    "name": "Doug Compton"
+  },
+  "license": "MIT",
+  "keywords": ["guitar", "practice", "music", "coach", "beginner", "learning"]
+}

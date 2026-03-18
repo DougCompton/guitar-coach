@@ -13,9 +13,10 @@ Score these areas independently:
 
 ## Scale
 
-- 1 to 4: fragile
-- 5 to 7: developing
-- 8 to 10: usable and repeatable
+- 1–3 = Fragile: high error rate, requires heavy focus, not usable in songs
+- 4–5 = Workable: usable with effort, some errors, familiar contexts only
+- 6–7 = Reliable: consistent execution, few errors, works in most contexts
+- 8–10 = Fluent: automatic, error-free, musical across contexts and tempos
 
 ## Scoring guidance
 

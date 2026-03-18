@@ -44,6 +44,36 @@ DEFAULTS = {
         "Learn a simple traditional tune in ASCII tab",
         "Review and phrasing polish",
     ],
+    "rock": [
+        "Power chords on E and A strings with correct muting",
+        "Palm muting and pick-attack control",
+        "Root-5 power chord movement and basic rock rhythm patterns",
+        "Down-stroke riffing and string crossing at steady tempo",
+        "Minor pentatonic scale box 1 and first simple lick",
+        "Bending basics: half-step and whole-step bends in tune",
+        "Riff-based song study using power chords and pentatonic ideas",
+        "Review and tone: dynamics, muting clarity, and rhythmic tightness",
+    ],
+    "blues": [
+        "12-bar blues structure with open E, A, and B7 chords",
+        "Shuffle feel and swing eighth-note rhythm",
+        "Minor pentatonic box 1 and the blues note (b5)",
+        "Call-and-response phrasing over a 12-bar form",
+        "Expressive bending and vibrato in context",
+        "Simple blues lick library: turnarounds, rakes, and slides",
+        "Playing a complete 12-bar blues from start to finish musically",
+        "Review and improvisation: making choices, leaving space, and phrasing",
+    ],
+    "country": [
+        "Open chord vocabulary with capo: common keys on capo 2 and capo 4",
+        "Alternating bass pick: thumb-driven bass note with pick or fingers on treble strings",
+        "Basic hybrid picking: pick and middle finger together on adjacent strings",
+        "Chicken pickin' introduction: muted snap on treble strings with ring or middle finger",
+        "Pedal-steel-style bends: whole-step bends in tune on the B and G strings",
+        "Country rhythm feel: boom-chick pattern and shuffle subdivision",
+        "Simple country lead over a I-IV-V progression",
+        "Review and taste: clean tone, dynamics, and phrasing space",
+    ],
 }
 
 

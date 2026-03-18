@@ -1,6 +1,6 @@
 # Audio Reflection Prompt
 
-**Replaces:** `scripts/listen_and_reflect.py` (coaching output only — script still computes the metrics)
+**Data flow:** Run `listen_and_reflect.py` (computes metrics) — ask student how the recording felt — then read this prompt
 
 **Purpose:** Interpret audio analysis metrics in the context of what was played and what the student felt — not just report numbers, but explain what they mean and recommend next steps.
 

@@ -1,12 +1,12 @@
 # Single-Issue Repair Session Prompt
 
-**Replaces:** `scripts/fix_one_thing.py`
-
 **Purpose:** Generate a focused 3-drill progression to fix one specific technique problem — diagnosing the root cause rather than applying a pre-written drill template.
 
+**Data flow:** Run `fix_one_thing.py` first (produces drill time allocation), then run `analyze_logs.py --logs 10` (for issue history and context), then read this prompt to generate the full repair session.
+
 **Data required before calling this prompt:**
-- Issue type and session minutes (from CLI or user input)
-- Output of `analyze_logs.py --logs 10` (to find history with this issue)
+- Output of `fix_one_thing.py` (drill time allocation)
+- Output of `analyze_logs.py --logs 10` (issue history — first seen, frequency, context)
 - Current lesson from roadmap
 
 ---

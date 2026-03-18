@@ -1,8 +1,8 @@
 # Session Design Prompt
 
-**Replaces:** `scripts/build_practice_session.py`
+**Purpose:** Build a personalized practice session using time blocks from `build_practice_session.py` — adapting structure to readiness, lesson context, and recent history rather than using a fixed formula.
 
-**Purpose:** Build a time-allocated practice session structure tailored to the student's current readiness, lesson, and history — not a fixed time formula.
+**Data flow:** Run `build_practice_session.py` first (produces raw time blocks), then run `analyze_logs.py --logs 5` and `readiness_check.py`, then read this prompt to generate the full session plan.
 
 **Data required before calling this prompt:**
 - Output of `readiness_check.py` (session type + ratings)

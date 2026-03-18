@@ -1,13 +1,13 @@
 # Preservation Session Prompt
 
-**Replaces:** `scripts/bad_day_session.py`
-
 **Purpose:** Design a minimal, confidence-preserving session for days when the student is struggling, tired, or demoralized — keeping the habit alive without adding stress.
 
+**Data flow:** Run `bad_day_session.py` first (produces time block allocation), then run `analyze_logs.py --logs 5` (for most recent win and last session summaries), then read this prompt to generate the full preservation session. Derive `{{streak_days}}` manually: count how many of the log dates are consecutive days ending on the most recent date.
+
 **Data required before calling this prompt:**
-- Session minutes and readiness ratings
-- Most recent win from `analyze_logs.py --logs 5`
-- Repertoire file (familiar material)
+- Output of `bad_day_session.py` (time allocation)
+- Output of `analyze_logs.py --logs 5` (recent win, last 3 summaries)
+- `repertoire.md` read directly (familiar material)
 
 ---
 

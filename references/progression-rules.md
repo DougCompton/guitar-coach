@@ -10,6 +10,50 @@ Use this file when deciding whether the user should advance, repeat, or simplify
 4. Check confidence and consistency across multiple days.
 5. Only then recommend advancement.
 
+## Advance criteria
+
+Recommend **advance** when most of these are true:
+
+- the skill is performed cleanly at the current target speed or target tempo
+- for tempo-based material, the top rung in the tempo ladder is passed with the required clean reps
+- the user selects a high readiness or confidence option in at least 2 recent sessions
+- the main error is occasional, not constant
+- the skill remains repeatable across multiple attempts or days
+- there is no meaningful pain or tension interfering with execution
+
+## Keep practicing criteria
+
+Recommend **keep practicing the current lesson** when any of these are true:
+
+- mistakes are frequent or foundational
+- tempo collapses when attention shifts
+- chord changes or fingering remain inconsistent
+- the user keeps choosing weak accuracy, timing, or readiness options repeatedly
+- the skill works once but is not yet repeatable
+
+## Simplify criteria
+
+Recommend **simplify** when any of these are true:
+
+- pain, strain, or excess tension appears
+- the target tempo is too ambitious
+- too many new variables were introduced at once
+- the user cannot explain what success should sound or feel like
+
+## Simplification menu
+
+When a task is too hard, reduce one variable at a time:
+
+- slower tempo
+- fewer chords
+- smaller chunk
+- simpler strum
+- shorter phrase
+- fewer repetitions with better rest
+- isolate fretting hand only
+- isolate strumming hand only
+- clap or count before playing
+
 ## Repeatable skill test
 
 A skill is closer to learned when the user can:
@@ -37,18 +81,6 @@ Advance when the user can play a short section musically and recover from small 
 ### Theory and ear training
 Advance when the user answers accurately more often than not and can connect the concept to playing.
 
-## Simplification menu
-
-When a task is too hard, choose one simplification:
-
-- halve the tempo
-- shrink the phrase to two beats or one bar
-- use fewer chords
-- isolate fretting hand only
-- isolate strumming hand only
-- clap or count before playing
-- switch from full speed song play to looped micro-practice
-
 ## Tempo-based milestones
 
 For chord changes, scales, strumming, riffs, and songs with a target groove, prefer measurable BPM milestones.
@@ -65,5 +97,4 @@ Use `scripts/tempo_ladder.py` to build the ladder.
 
 After a lesson becomes playable, keep it alive with review passes at +2, +7, +14, and +30 days.
 
-Use `scripts/spaced_repetition_plan.py` when the user wants concrete dates.
-
+Use `prompts/review_schedule.md` when the user wants concrete dates — collect skill name, start date, last attempt, performance quality, and prior review count conversationally, then read that prompt to compute the schedule.

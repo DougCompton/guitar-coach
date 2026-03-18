@@ -1,6 +1,6 @@
 # Plateau Analysis Prompt
 
-**Replaces:** `scripts/plateau_detector.py`
+**Data flow:** Run `analyze_logs.py --folder PATH --logs 8` — then read this prompt
 
 **Purpose:** Determine if the student is truly stuck on a problem, diagnose why, and recommend a targeted micro-intervention.
 

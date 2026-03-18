@@ -1,6 +1,6 @@
 # Weak Spot Drill Plan Prompt
 
-**Replaces:** `scripts/weak_spot_tracker.py`
+**Data flow:** Run `analyze_logs.py --folder PATH --logs 10` — then read this prompt
 
 **Purpose:** Identify the most important recurring weak spots and prescribe targeted drills for the next session — not pre-written templates, but drills reasoned from the actual evidence.
 

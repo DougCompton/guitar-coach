@@ -1,11 +1,11 @@
 # Readiness Assessment Prompt
 
-**Replaces:** `scripts/readiness_check.py`
-
 **Purpose:** Interpret today's readiness ratings in context — not just a threshold lookup — and recommend a session type with specific modifications.
 
+**Data flow:** Run `readiness_check.py` first (produces the session type classification), then run `analyze_logs.py --logs 3` (recent session context), then read this prompt to generate the full assessment.
+
 **Data required before calling this prompt:**
-- Readiness ratings (energy, focus, tension, pain, minutes) from CLI or user input
+- Output of `readiness_check.py` (session type + ratings)
 - Output of `analyze_logs.py --logs 3` (recent session types and outcomes)
 
 ---
