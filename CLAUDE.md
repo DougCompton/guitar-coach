@@ -54,7 +54,8 @@ The skill runs against a user-owned **notes folder** (e.g., `~/guitar-notes/`) t
 ├── roadmap-{track}.md        ← (intermediate, fingerstyle, celtic, rock, blues, country)
 ├── repertoire.md             ← songs in learning / polishing / maintenance states
 └── logs/
-    ├── YYYY-MM-DD-guitar-practice.md   ← daily log (one per session)
+    ├── YYYY-MM-DD-guitar-practice.md   ← first session of the day
+    ├── YYYY-MM-DD-guitar-practice-2.md ← second session same day (if any)
     └── archive/YYYY/                   ← logs older than ~60 days
 ```
 

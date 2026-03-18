@@ -37,22 +37,27 @@ STATUS_RE      = re.compile(r"#status/(\S+)")
 ISSUE_LOG_RE   = re.compile(r"^## Issue Log", re.M)
 ISSUE_TAG_RE   = re.compile(r"#issue/\S+")
 SESSION_START_RE = re.compile(r"^## Session Start", re.M)
-DATE_FILENAME_RE = re.compile(r"(\d{4}-\d{2}-\d{2})-guitar-practice\.md$")
+DATE_FILENAME_RE = re.compile(r"(\d{4}-\d{2}-\d{2})-guitar-practice(?:-(\d+))?\.md$")
 
 
 def find_log(folder: Path, target_date: str = None) -> Path:
-    if target_date:
-        path = folder / f"{target_date}-guitar-practice.md"
-        if not path.exists():
-            raise SystemExit(f"Log not found: {path}")
-        return path
+    def sort_key(p):
+        m = DATE_FILENAME_RE.search(p.name)
+        return (m.group(1), int(m.group(2)) if m.group(2) else 1)
 
     candidates = sorted(
-        (p for p in folder.glob("*-guitar-practice.md") if DATE_FILENAME_RE.search(p.name)),
-        key=lambda p: DATE_FILENAME_RE.search(p.name).group(1),
+        (p for p in folder.glob("*-guitar-practice*.md") if DATE_FILENAME_RE.search(p.name)),
+        key=sort_key,
     )
     if not candidates:
         raise SystemExit("No practice logs found in folder.")
+
+    if target_date:
+        dated = [p for p in candidates if DATE_FILENAME_RE.search(p.name).group(1) == target_date]
+        if not dated:
+            raise SystemExit(f"No log found for date: {target_date}")
+        return dated[-1]
+
     return candidates[-1]
 
 

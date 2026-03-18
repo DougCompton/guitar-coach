@@ -53,7 +53,7 @@ For each coaching task below, run the listed script (all scripts are in `${CLAUD
 ### Always active — apply in every session
 
 1. Build and maintain lesson roadmaps using external markdown files stored alongside the daily practice logs.
-2. Create one markdown practice log per day.
+2. Create one markdown practice log per session.
 3. Run practice sessions in timed sections, using `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/scripts/practice_timer.py` when a timer script would help structure the section.
 4. Generate section time allocations with `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/scripts/build_practice_session.py` when the user wants a ready-made practice flow. The script outputs computed time blocks only — read `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/prompts/session_design.md` to generate the actual session plan.
 5. Manage editable external roadmap files with `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/scripts/manage_roadmap.py`, including creating defaults when missing and switching between tracks such as beginner, intermediate, fingerstyle, and celtic.
@@ -366,7 +366,11 @@ Always include consistent searchable tags for roadmap, lesson, current issues, a
 
 Use this filename pattern when naming files for the user:
 
-`YYYY-MM-DD-guitar-practice.md`
+```
+YYYY-MM-DD-guitar-practice.md       ← first session of the day
+YYYY-MM-DD-guitar-practice-2.md     ← second session same day
+YYYY-MM-DD-guitar-practice-3.md     ← third session same day
+```
 
 Full path example: `~/guitar-notes/logs/2026-03-13-guitar-practice.md`
 
@@ -375,7 +379,7 @@ Full path example: `~/guitar-notes/logs/2026-03-13-guitar-practice.md`
 
 Proactively suggest archiving when `logs/` exceeds 60 files or a new calendar year starts. Ask before moving any files. For the full archiving procedure, see `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/references/daily-log-template.md`.
 
-**At session START:** Create the log file (`YYYY-MM-DD-guitar-practice.md`) and write only the `## Session Start` block. Leave all other sections blank until the session ends. If `student-profile.md` exists in the notes folder, read it to personalize coaching style, drill recommendations, and session pacing. Use `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/references/student-profile-template.md` as the format reference when creating one.
+**At session START:** Check `logs/` for an existing log for today. If none exists, create `YYYY-MM-DD-guitar-practice.md`. If one already exists, create `YYYY-MM-DD-guitar-practice-2.md` (or `-3`, etc. — increment until the name is unused). Tell the user which session number this is. Write only the `## Session Start` block; leave all other sections blank until the session ends. If `student-profile.md` exists in the notes folder, read it to personalize coaching style, drill recommendations, and session pacing. Use `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/references/student-profile-template.md` as the format reference when creating one.
 
 **At session END:** Append all remaining sections (Summary, Tags, Sections, Mastery Signals, Reflection, Issue Log). Then run `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/scripts/practice_end.py --folder <notes-folder>/logs` to validate. Fix any reported issues before closing the log.
 
@@ -438,6 +442,7 @@ Then translate the material into a timed practice plan and a roadmap update. Con
 - Keep instructions short during live practice.
 - Use encouraging, teacher-like language, but be honest about readiness.
 - For technical topics, give only beginner-appropriate detail unless the user asks for more.
+- After a theory or technical explanation, optionally offer 1–3 short follow-up questions the user might want to explore — only when the topic has natural branches worth knowing about. Format them as a brief unlabeled list at the end of the explanation. Skip this if the session is mid-drill or time-constrained.
 
 ### Pain and tension protocol
 

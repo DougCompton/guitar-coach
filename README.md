@@ -281,10 +281,11 @@ After each section, the coach updates your markdown log and decides what comes n
 
 ## Daily practice log
 
-The coach creates one markdown file per practice day in a `logs/` subfolder inside your notes folder:
+The coach creates one markdown file per session in a `logs/` subfolder inside your notes folder. If you practice twice in one day, a second file is created automatically:
 
 ```
-~/guitar-notes/logs/2026-03-13-guitar-practice.md
+~/guitar-notes/logs/2026-03-13-guitar-practice.md    ← first session
+~/guitar-notes/logs/2026-03-13-guitar-practice-2.md  ← second session same day
 ```
 
 Roadmap and repertoire files stay in the root of your notes folder so they are easy to find and edit. Logs stay in `logs/` so they don't clutter the root.
@@ -317,7 +318,7 @@ The coach will ask before moving any files. Most coaching tools only need the la
 | Feature | What it does |
 |---|---|
 | Session planning | Builds timed section plans with mini-wins for every block |
-| Daily markdown log | Creates one `YYYY-MM-DD-guitar-practice.md` per day |
+| Daily markdown log | Creates one log per session; multiple sessions same day get a `-2`, `-3` suffix |
 | Live practice coaching | Timer prompts, checkpoint cues, and section-by-section guidance |
 | Numbered reflection | Post-section questions answered with digits only |
 | Repeat / simplify / advance | Evidence-based recommendation after each session |

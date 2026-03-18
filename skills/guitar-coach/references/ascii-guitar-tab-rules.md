@@ -117,10 +117,14 @@ When showing rhythm guitar, use a chord line above the tab. If exact voicing mat
 Example with chord names and simple strum guidance:
 
 ```text
-   G              C              D              G
+   G               C               D               G
    1 & 2 & 3 & 4 & 1 & 2 & 3 & 4 & 1 & 2 & 3 & 4 & 1 & 2 & 3 & 4 &
    D   D U   U D U D   D U   U D U D   D U   U D U D   D U   U D U
 ```
+
+### Strum direction alignment
+
+Each symbol in the D/U line aligns column-for-column with the count line directly above it. Place D or U in the same character position as the subdivision it falls on (1, &, e, a). Use a space in all other positions. The D/U line sits immediately below the count line with no blank line between them.
 
 If voicing matters, add a tab voicing below:
 

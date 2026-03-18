@@ -19,7 +19,7 @@ from pathlib import Path
 
 # --- Regex patterns targeting the Unified Practice Log Format ---
 
-DATE_FILENAME_RE = re.compile(r"(\d{4}-\d{2}-\d{2})-guitar-practice\.md$")
+DATE_FILENAME_RE = re.compile(r"(\d{4}-\d{2}-\d{2})-guitar-practice(?:-(\d+))?\.md$")
 
 # Session Start block
 SESSION_TYPE_RE   = re.compile(r"^- Session type:\s*(.+)", re.M)
@@ -66,21 +66,22 @@ TENSION_PAIN_RE   = re.compile(r"^- Tension or pain:\s*(.+)", re.M)
 def find_logs(folder: Path, logs_n: int = None, days_n: int = None):
     """Return (date, path) pairs sorted oldest to newest, filtered by --logs or --days."""
     all_logs = []
-    for path in folder.glob("*-guitar-practice.md"):
+    for path in folder.glob("*-guitar-practice*.md"):
         m = DATE_FILENAME_RE.search(path.name)
         if not m:
             continue
         date = datetime.strptime(m.group(1), "%Y-%m-%d").date()
-        all_logs.append((date, path))
-    all_logs.sort()
+        session_num = int(m.group(2)) if m.group(2) else 1
+        all_logs.append((date, session_num, path))
+    all_logs.sort(key=lambda x: (x[0], x[1]))
 
     if days_n is not None:
         cutoff = datetime.today().date() - timedelta(days=days_n - 1)
-        all_logs = [(d, p) for d, p in all_logs if d >= cutoff]
+        all_logs = [(d, n, p) for d, n, p in all_logs if d >= cutoff]
     elif logs_n is not None:
         all_logs = all_logs[-logs_n:]
 
-    return all_logs
+    return [(d, p) for d, n, p in all_logs]
 
 
 def _get(text: str, pattern: re.Pattern) -> str:

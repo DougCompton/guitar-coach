@@ -10,7 +10,7 @@ from pathlib import Path
 # raising UnicodeEncodeError.
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-DATE_RE = re.compile(r'(\d{4}-\d{2}-\d{2})-guitar-practice\.md$')
+DATE_RE = re.compile(r'(\d{4}-\d{2}-\d{2})-guitar-practice(?:-(\d+))?\.md$')
 PLANNED_RE = re.compile(r'Total planned time:\s*(\d+)')
 ACTUAL_RE = re.compile(r'Total actual time:\s*(\d+)')
 SKILL_RE = re.compile(r'#skill/([a-z\-]+)')
@@ -43,8 +43,12 @@ def main():
     p.add_argument('--limit', type=int, default=14)
     args = p.parse_args()
 
+    def sort_key(p):
+        m = DATE_RE.search(p.name)
+        return (m.group(1), int(m.group(2)) if m.group(2) else 1) if m else ('', 1)
+
     rows = []
-    for path in sorted(Path(args.folder).glob('*-guitar-practice.md'))[-args.limit:]:
+    for path in sorted(Path(args.folder).glob('*-guitar-practice*.md'), key=sort_key)[-args.limit:]:
         text = path.read_text(encoding='utf-8')
         m = DATE_RE.search(path.name)
         if not m:

@@ -2,7 +2,13 @@
 
 Use this reference when creating or reviewing a daily practice log. The filename pattern is:
 
-`YYYY-MM-DD-guitar-practice.md`
+```
+YYYY-MM-DD-guitar-practice.md       ← first session of the day
+YYYY-MM-DD-guitar-practice-2.md     ← second session same day
+YYYY-MM-DD-guitar-practice-3.md     ← third session same day
+```
+
+If a log already exists for today, increment the suffix (`-2`, `-3`, …). Session 1 never gets a suffix; its filename stays unchanged for backward compatibility.
 
 ---
 
