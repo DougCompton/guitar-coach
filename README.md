@@ -8,21 +8,26 @@ A structured AI guitar-practice coach for returning beginners. Tell it how much 
 
 ### Claude Code
 
-**Install from GitHub:**
+**Step 1 — Add the marketplace:**
 ```bash
-/plugin install https://github.com/DougCompton/guitar-coach
+/plugin marketplace add https://github.com/DougCompton/guitar-coach
+```
+
+**Step 2 — Install the plugin:**
+```bash
+/plugin install guitar-coach@DougCompton
 ```
 
 **Choose an installation scope** (optional, defaults to `user`):
 ```bash
 # user — available in all your projects (default)
-claude plugin install https://github.com/DougCompton/guitar-coach --scope user
+claude plugin install guitar-coach@DougCompton --scope user
 
 # project — shared with your team via .claude/settings.json
-claude plugin install https://github.com/DougCompton/guitar-coach --scope project
+claude plugin install guitar-coach@DougCompton --scope project
 
 # local — only you in this project, not committed to git
-claude plugin install https://github.com/DougCompton/guitar-coach --scope local
+claude plugin install guitar-coach@DougCompton --scope local
 ```
 
 **Test locally without installing** (from the directory containing the `guitar-coach` folder):

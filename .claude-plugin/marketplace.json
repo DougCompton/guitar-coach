@@ -1,0 +1,11 @@
+{
+  "name": "guitar-coach",
+  "plugins": [
+    {
+      "name": "guitar-coach",
+      "source": "./",
+      "description": "Guitar coaching plugin for Claude Code",
+      "version": "1.0.0"
+    }
+  ]
+}
