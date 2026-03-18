@@ -1,4 +1,4 @@
-# Guitar Coach Skill
+# Guitar Coach Plugin
 
 A structured AI guitar-practice coach for returning beginners. Tell it how much time you have and how you feel — it plans the session, runs the timers, tracks your progress, and tells you whether to repeat, simplify, or advance. You never run scripts manually; the coach handles all of that in the background.
 
@@ -8,38 +8,47 @@ A structured AI guitar-practice coach for returning beginners. Tell it how much 
 
 ### Claude Code
 
-1. Copy the `guitar-coach` folder into your Claude Code skills directory:
+**Install from GitHub:**
+```bash
+/plugin install https://github.com/DougCompton/guitar-coach
+```
 
-   **macOS / Linux (bash)**
-   ```bash
-   cp -r guitar-coach ~/.claude/skills/
-   ```
+**Choose an installation scope** (optional, defaults to `user`):
+```bash
+# user — available in all your projects (default)
+claude plugin install https://github.com/DougCompton/guitar-coach --scope user
 
-   **Windows — PowerShell**
-   ```powershell
-   Copy-Item -Recurse guitar-coach "$env:USERPROFILE\.claude\skills\"
-   ```
+# project — shared with your team via .claude/settings.json
+claude plugin install https://github.com/DougCompton/guitar-coach --scope project
 
-   **Windows — Command Prompt (cmd)**
-   ```cmd
-   xcopy /E /I guitar-coach "%USERPROFILE%\.claude\skills\guitar-coach"
-   ```
+# local — only you in this project, not committed to git
+claude plugin install https://github.com/DougCompton/guitar-coach --scope local
+```
 
-2. Confirm the skill file is in place:
+**Test locally without installing** (from the directory containing the `guitar-coach` folder):
+```bash
+claude --plugin-dir ./guitar-coach
+```
 
-   **macOS / Linux**
-   ```
-   ~/.claude/skills/guitar-coach/SKILL.md
-   ```
+**Manage the plugin after installation:**
+```bash
+claude plugin update guitar-coach     # update to latest
+claude plugin disable guitar-coach    # disable without removing
+claude plugin uninstall guitar-coach  # remove completely
+```
 
-   **Windows**
-   ```
-   %USERPROFILE%\.claude\skills\guitar-coach\SKILL.md
-   ```
+Once installed, the coach triggers automatically when you talk about guitar practice. It does not need to be invoked by name.
 
-3. Reload Claude Code (or start a new session). The skill is active when you see `guitar-coach` listed under available skills.
+---
 
-The coach triggers automatically when you talk about guitar practice. It does not need to be invoked by name.
+### Claude (web, desktop, or mobile)
+
+1. Open **Settings → Integrations** (or search for "Plugins" in the sidebar).
+2. Click **Add plugin** and paste `https://github.com/DougCompton/guitar-coach` or search for `guitar-coach` in the marketplace.
+3. Approve any requested permissions and save.
+4. Start a new conversation — the coach is active immediately.
+
+> Note: Script execution is not available in the web/desktop/mobile clients. The coach will provide all analysis and coaching inline without running the Python helpers.
 
 ---
 
@@ -47,18 +56,18 @@ The coach triggers automatically when you talk about guitar practice. It does no
 
 If your AI tool supports a persistent system prompt or custom instructions:
 
-1. Open `SKILL.md` in a text editor.
+1. Open `skills/guitar-coach/SKILL.md` in a text editor.
 2. Copy everything from the first `#` heading to the end of the file (skip the YAML frontmatter block at the top between the `---` markers).
 3. Paste it into your tool's system prompt or custom instructions field.
 4. Save and start a new session.
 
-Note: In this mode, the Python scripts in `scripts/` cannot be executed automatically. The coach will provide all coaching logic inline instead.
+Note: In this mode, the Python scripts in `skills/guitar-coach/scripts/` cannot be executed automatically. The coach will provide all coaching logic inline instead.
 
 ---
 
 ### OpenAI Actions / ChatGPT plugin
 
-The `agents/openai.yaml` file is a placeholder for an OpenAI Actions spec. It is not yet a deployable plugin. To deploy as an OpenAI Action, expand that file with a full `openapi: 3.1.0` spec, an `auth` section, and action mappings to the `scripts/` endpoints. See the comment in that file for details.
+The `agents/openai.yaml` file is a placeholder for an OpenAI Actions spec. It is not yet a deployable plugin. To deploy as an OpenAI Action, expand that file with a full `openapi: 3.1.0` spec, an `auth` section, and action mappings to the `skills/guitar-coach/scripts/` endpoints. See the comment in that file for details.
 
 ---
 
@@ -368,17 +377,19 @@ The coach creates all of these on first use. Roadmap and repertoire files stay i
 
 ---
 
-## Files in this skill
+## Files in this plugin
 
 | File / Folder | Purpose |
 |---|---|
-| `SKILL.md` | Skill behavior and coaching rules |
+| `.claude-plugin/plugin.json` | Plugin manifest (name, version, description) |
+| `skills/guitar-coach/SKILL.md` | Skill behavior and coaching rules |
 | `README.md` | This file |
 | `DEVELOPMENT.md` | Open TODOs and suggested improvements |
 | `agents/openai.yaml` | Reserved for OpenAI Actions metadata |
 | `requirements.txt` | Python dependency list (standard library only; `sounddevice` optional) |
-| `scripts/` | Automation helpers run automatically by the coach |
-| `references/` | Tab rules, roadmap formats, templates, and coaching references |
+| `skills/guitar-coach/scripts/` | Automation helpers run automatically by the coach |
+| `skills/guitar-coach/references/` | Tab rules, roadmap formats, templates, and coaching references |
+| `skills/guitar-coach/prompts/` | Coaching analysis prompt templates |
 
 ---
 

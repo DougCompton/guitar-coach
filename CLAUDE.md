@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A Claude Code **skill** — a structured AI guitar-practice coach. Once installed at `~/.claude/skills/guitar-coach/` (or `%USERPROFILE%\.claude\skills\guitar-coach\` on Windows), it is loaded automatically when the user talks about guitar practice.
+A Claude Code **plugin** — a structured AI guitar-practice coach. Install it with `/plugin install <url>` or test locally with `claude --plugin-dir ./guitar-coach`. Once installed, it loads automatically when the user talks about guitar practice.
 
-The behavioral specification lives in `SKILL.md`. All 17 Python helper scripts in `scripts/` are invoked by the coach at runtime — users never call them directly.
+The behavioral specification lives in `skills/guitar-coach/SKILL.md`. All Python helper scripts in `skills/guitar-coach/scripts/` are invoked by the coach at runtime — users never call them directly.
 
 ## Running scripts
 
@@ -16,28 +16,31 @@ All scripts use Python 3.9+ with only the standard library (no build step, no vi
 # Install optional audio dependency only
 pip install sounddevice
 
-# Run any script directly
-python scripts/practice_timer.py --section "Warm-up" --minutes 4 --task "..." --success "..."
-python scripts/build_practice_session.py --minutes 30
-python scripts/build_practice_session.py --minutes 30 --weak-spot "chord-transitions"
-python scripts/analyze_logs.py --folder ~/guitar-notes/logs --logs 7
-python scripts/analyze_logs.py --folder ~/guitar-notes/logs --days 7
-python scripts/readiness_check.py --minutes 30 --energy 3 --focus 3 --tension 1 --pain 1
-python scripts/practice_end.py --folder ~/guitar-notes/logs
+# Run any script directly (from the repo root)
+python skills/guitar-coach/scripts/practice_timer.py --section "Warm-up" --minutes 4 --task "..." --success "..."
+python skills/guitar-coach/scripts/build_practice_session.py --minutes 30
+python skills/guitar-coach/scripts/build_practice_session.py --minutes 30 --weak-spot "chord-transitions"
+python skills/guitar-coach/scripts/analyze_logs.py --folder ~/guitar-notes/logs --logs 7
+python skills/guitar-coach/scripts/analyze_logs.py --folder ~/guitar-notes/logs --days 7
+python skills/guitar-coach/scripts/readiness_check.py --minutes 30 --energy 3 --focus 3 --tension 1 --pain 1
+python skills/guitar-coach/scripts/practice_end.py --folder ~/guitar-notes/logs
 ```
 
-**Critical:** When the skill is running inside Claude Code, scripts must use the **absolute path** to the skill directory. Never use relative paths — the shell may be `cd`'d elsewhere. Use `--folder <notes-folder>` instead of `cd`-ing into the notes folder.
+**Critical:** When the plugin is running inside Claude Code, scripts must use the **absolute path** via `${CLAUDE_PLUGIN_ROOT}`. Never use relative paths — the shell may be `cd`'d elsewhere. Use `--folder <notes-folder>` instead of `cd`-ing into the notes folder.
 
 ## Architecture
 
 ```
 guitar-coach/
-├── SKILL.md          ← Behavioral spec (the coach's rules, loaded as system context)
-├── scripts/          ← 17 Python automation helpers (called by the coach at runtime)
-├── references/       ← 20 Markdown reference docs (tab rules, roadmap formats, templates)
-├── prompts/          ← 13 Markdown prompt files (coaching analysis templates)
-├── agents/           ← Placeholder for future OpenAI Actions integration
-└── requirements.txt  ← Python deps (stdlib only; sounddevice optional)
+├── .claude-plugin/
+│   └── plugin.json                  ← Plugin manifest (name, version, description)
+├── skills/guitar-coach/
+│   ├── SKILL.md                     ← Behavioral spec (the coach's rules, loaded as system context)
+│   ├── scripts/                     ← Python automation helpers (called by the coach at runtime)
+│   ├── references/                  ← Markdown reference docs (tab rules, roadmap formats, templates)
+│   └── prompts/                     ← Markdown prompt files (coaching analysis templates)
+├── agents/                          ← Placeholder for future OpenAI Actions integration
+└── requirements.txt                 ← Python deps (stdlib only; sounddevice optional)
 ```
 
 ### Data flow at runtime
@@ -70,7 +73,7 @@ Scripts that read logs accept a `--folder` argument pointing at the `logs/` subf
 
 ### Reference documents
 
-`references/` contains the formatting standards and coaching frameworks that both the skill and scripts depend on:
+`skills/guitar-coach/references/` contains the formatting standards and coaching frameworks that both the skill and scripts depend on:
 
 - **Tab and notation:** `ascii-guitar-tab-rules.md`, `ascii-tab-quality-library.md`, `chord-diagram-format.md`
 - **Coaching logic:** `coaching-modes.md`, `mastery-score-rules.md`, `progression-rules.md`, `diagnostic-mode.md`, `audio-reflection-rules.md`
@@ -79,9 +82,9 @@ Scripts that read logs accept a `--folder` argument pointing at the `logs/` subf
 
 ## Key conventions
 
-- **All playable examples use ASCII guitar tab** — formatted per `references/ascii-guitar-tab-rules.md`. Never use inline fret notation like `x32010`.
-- **Chord shapes use vertical box diagrams** — per `references/chord-diagram-format.md`.
-- **7 built-in roadmap tracks**: beginner, intermediate, fingerstyle, celtic, rock, blues, country. Each has 8 lessons. Tracks are created by `manage_roadmap.py --ensure-defaults`.
+- **All playable examples use ASCII guitar tab** — formatted per `skills/guitar-coach/references/ascii-guitar-tab-rules.md`. Never use inline fret notation like `x32010`.
+- **Chord shapes use vertical box diagrams** — per `skills/guitar-coach/references/chord-diagram-format.md`.
+- **7 built-in roadmap tracks**: beginner, intermediate, fingerstyle, celtic, rock, blues, country. Each has 8 lessons. Tracks are created by `skills/guitar-coach/scripts/manage_roadmap.py --ensure-defaults`.
 - **Log archiving trigger**: when `logs/` exceeds 60 files or a new calendar year starts. Always ask before moving files.
 - **Pain protocol**: Stop immediately, log it, end the session — never push through pain.
 

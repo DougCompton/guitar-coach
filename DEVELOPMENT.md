@@ -128,4 +128,4 @@ Scores readiness using `repertoire_checklist.py` and sets a clear "ready to perf
 
 - `weekly_review.py` is referenced twice in SKILL.md responsibilities (items 13 and 30). These descriptions should be merged into one.
 - The `agents/openai.yaml` file is a placeholder. Expand it with a proper OpenAI Actions spec if cross-platform deployment is needed.
-- All scripts assume they are run from within or relative to the `scripts/` directory. Add a `--root` or `--skill-dir` flag to make this explicit.
+- All scripts assume they are run with an absolute path (via `${CLAUDE_PLUGIN_ROOT}/skills/guitar-coach/scripts/`). The plugin conversion addressed this, but a `--root` flag could make standalone execution more explicit.
