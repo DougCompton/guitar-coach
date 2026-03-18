@@ -1,5 +1,13 @@
 {
   "name": "guitar-coach",
+  "owner": {
+    "name": "Doug Compton",
+    "email": "your@email.com"
+  },
+  "metadata": {
+    "description": "Guitar coaching plugin for Claude Code",
+    "version": "1.0.0"
+  },
   "plugins": [
     {
       "name": "guitar-coach",
